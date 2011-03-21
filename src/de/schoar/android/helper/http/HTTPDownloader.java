@@ -50,6 +50,11 @@ public class HTTPDownloader {
 
 		HttpURLConnection.setFollowRedirects(true);
 		HttpURLConnection huc;
+		
+		// Set Timeout
+		System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
+		System.setProperty("sun.net.client.defaultReadTimeout", "30000");
+		
 		try {
 			huc = (HttpURLConnection) url.openConnection();
 		} catch (Exception e) {
@@ -104,6 +109,10 @@ public class HTTPDownloader {
 		} catch (Exception e) {
 			throw new HTTPDownloaderException("Could not read from URL ("
 					+ mUrl + "): " + e.getMessage());
+		} finally {
+			// Unset Timeout
+			System.clearProperty("sun.net.client.defaultConnectTimeout");
+			System.clearProperty("sun.net.client.defaultReadTimeout");
 		}
 
 	}
