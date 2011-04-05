@@ -17,9 +17,9 @@ public class DefaultMenu {
 	private static final int MENU_LOG = 6;
 	private static final int MENU_ENDISABLE_SERVICE = 7;
 
-	public static void addAbout(Menu menu) {
-		menu.add(0, MENU_ABOUT, 0, "About").setIcon(
-				android.R.drawable.ic_menu_info_details);
+	public static void addEnDisableService(Menu menu) {
+		menu.add(0, MENU_ENDISABLE_SERVICE, 0, "En/Disable Service").setIcon(
+				android.R.drawable.ic_menu_recent_history);
 	}
 
 	public static void addConfiguration(Menu menu) {
@@ -47,11 +47,11 @@ public class DefaultMenu {
 				android.R.drawable.ic_menu_agenda);
 	}
 
-	public static void addEnDisableService(Menu menu) {
-		menu.add(0, MENU_ENDISABLE_SERVICE, 0, "En/Disable Service").setIcon(
-				android.R.drawable.ic_menu_recent_history);
+	public static void addAbout(Menu menu) {
+		menu.add(0, MENU_ABOUT, 0, "About").setIcon(
+				android.R.drawable.ic_menu_info_details);
 	}
-
+	
 	public static boolean onOptionsItemSelected(MenuItem item,
 			final Activity act) {
 		int itemid = item.getItemId();

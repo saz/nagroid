@@ -104,10 +104,9 @@ public class ProblemsActivity extends Activity implements NagiosUpdatedListener 
 		DefaultMenu.addRefresh(menu);
 		DefaultMenu.addLog(menu);
 		DefaultMenu.addNagios(menu);
-		DefaultMenu.addAbout(menu);
 		DefaultMenu.addConfiguration(menu);
-		DefaultMenu.addHelp(menu);
 		DefaultMenu.addEnDisableService(menu);
+		DefaultMenu.addAbout(menu);
 		return true;
 	}
 

@@ -35,7 +35,19 @@ public class HTTPDownloader {
 	}
 
 	public InputStream getBodyAsInputStream() throws HTTPDownloaderException {
-		return getBodyAsInputStream(true);
+		int tries = 0;
+		
+		// retry handling
+		while (true) {
+			try {
+				return getBodyAsInputStream(false);
+			} catch (Exception e) {
+				if (tries > 3)
+					throw new HTTPDownloaderException(e.getMessage() + " (tries: " + tries + ")");
+				else
+					tries++;
+			}
+		}	
 	}
 
 	private InputStream getBodyAsInputStream(boolean retryOnceSSLFix)
@@ -50,13 +62,10 @@ public class HTTPDownloader {
 
 		HttpURLConnection.setFollowRedirects(true);
 		HttpURLConnection huc;
-		
-		// Set Timeout
-		System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
-		System.setProperty("sun.net.client.defaultReadTimeout", "30000");
-		
 		try {
 			huc = (HttpURLConnection) url.openConnection();
+			huc.setReadTimeout(10 * 1000);
+			huc.setConnectTimeout(10 * 1000);
 		} catch (Exception e) {
 			throw new HTTPDownloaderException("Could not open URL (" + mUrl
 					+ "): " + e.getMessage());
@@ -109,10 +118,6 @@ public class HTTPDownloader {
 		} catch (Exception e) {
 			throw new HTTPDownloaderException("Could not read from URL ("
 					+ mUrl + "): " + e.getMessage());
-		} finally {
-			// Unset Timeout
-			System.clearProperty("sun.net.client.defaultConnectTimeout");
-			System.clearProperty("sun.net.client.defaultReadTimeout");
 		}
 
 	}

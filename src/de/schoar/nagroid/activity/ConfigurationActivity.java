@@ -56,12 +56,11 @@ public class ConfigurationActivity extends PreferenceActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		DefaultMenu.addEnDisableService(menu);
 		DefaultMenu.addRefresh(menu);
 		DefaultMenu.addNagios(menu);
-		DefaultMenu.addAbout(menu);
 		DefaultMenu.addLog(menu);
-		DefaultMenu.addHelp(menu);
-		DefaultMenu.addEnDisableService(menu);
+		DefaultMenu.addAbout(menu);
 
 		return true;
 	}

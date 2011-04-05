@@ -72,8 +72,6 @@ public class LogActivity extends Activity implements NagroidLogUpdatedListener {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		DefaultMenu.addRefresh(menu);
 		DefaultMenu.addNagios(menu);
-		DefaultMenu.addAbout(menu);
-		DefaultMenu.addHelp(menu);
 		DefaultMenu.addEnDisableService(menu);
 		return true;
 	}

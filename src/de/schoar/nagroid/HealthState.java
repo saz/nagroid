@@ -75,6 +75,9 @@ public class HealthState {
 			sb.append("_ok");
 		} else {
 			sb.append("_error");
+			// XXX, alarm, we can't update state, nagios down?
+			String uriDefault = "android.resource://de.schoar.nagroid/raw/hostdown";
+			mSoundUri = Uri.parse(uriDefault);
 		}
 		sb.append("_" + mStateHosts.toColorStrNoHash().toLowerCase());
 		sb.append("_" + mStateServices.toColorStrNoHash().toLowerCase());
