@@ -46,15 +46,16 @@
 		<RingtonePreference 
 			android:key="configuration_notification_alarm_down_unreachable" android:title="Alarm On Down/Unr."
 			android:ringtoneType="all"/>
+		<RingtonePreference 
+			android:key="configuration_notification_alarm_poll_failure" android:title="Alarm On Poll Fail"
+			android:ringtoneType="all"/>
 		
 	</PreferenceCategory>
 
 	<PreferenceCategory android:title="Misc">
 		<CheckBoxPreference android:key="configuration_misc_autostart"
 			android:title="Autostart" android:summary="Autostart Nagroid after reboot" />
-		<TimePickerPreference android:key="configuration_misc_snoozetime"
-			android:title="Snooze time" android:summary="Snooze until this time in the morning"
-			android:defaultValue="9:00" />
+		<TimePickerPreference android:summary="Snooze until this time in the morning" android:title="Snooze time" android:key="configuration_misc_snoozetime" android:defaultValue="9:00"/>
 	</PreferenceCategory>
 
 </PreferenceScreen>

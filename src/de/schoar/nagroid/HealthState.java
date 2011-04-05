@@ -76,8 +76,9 @@ public class HealthState {
 		} else {
 			sb.append("_error");
 			// XXX, alarm, we can't update state, nagios down?
+			String uriSelected = DM.I.getConfiguration().getNotificationAlarmPollFailure();
 			String uriDefault = "android.resource://de.schoar.nagroid/raw/hostdown";
-			mSoundUri = Uri.parse(uriDefault);
+			mSoundUri = toSoundUri(uriSelected, uriDefault);
 		}
 		sb.append("_" + mStateHosts.toColorStrNoHash().toLowerCase());
 		sb.append("_" + mStateServices.toColorStrNoHash().toLowerCase());

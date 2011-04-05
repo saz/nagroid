@@ -27,6 +27,7 @@ public class ConfigurationAccess {
 	public static final String NOTIFICATION_ALARM_WARNING = "configuration_notification_alarm_warning";
 	public static final String NOTIFICATION_ALARM_CRITICAL = "configuration_notification_alarm_critical";
 	public static final String NOTIFICATION_ALARM_DOWN_UNREACHABLE = "configuration_notification_alarm_down_unreachable";
+	public static final String NOTIFICATION_ALARM_POLL_FAILURE = "configuration_notification_alarm_poll_failure";
 
 	public static final String POLLING_INTERVAL = "configuration_polling_interval";
 	public static final String POLLING_ENABLED = "configuration_polling_enabled";
@@ -221,6 +222,19 @@ public class ConfigurationAccess {
 		mSharedPreferencesPreference.edit().putString(
 				NOTIFICATION_ALARM_DOWN_UNREACHABLE, uri).commit();
 	}
+	
+	public synchronized String getNotificationAlarmPollFailure() {
+		return mSharedPreferencesPreference.getString(
+				NOTIFICATION_ALARM_POLL_FAILURE,
+				Settings.System.DEFAULT_RINGTONE_URI.toString());
+	}
+	
+	
+	public synchronized void setNotificationAlarmPollFailure(String uri) {
+		mSharedPreferencesPreference.edit().putString(
+				NOTIFICATION_ALARM_POLL_FAILURE, uri).commit();
+	}
+	
 
 	public synchronized boolean getMiscAutostart() {
 		return mSharedPreferencesPreference.getBoolean(MISC_AUTOSTART, true);
